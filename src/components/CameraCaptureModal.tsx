@@ -46,6 +46,25 @@ export const CameraCaptureModal: React.FC<CameraCaptureModalProps> = ({
 
   const slotPresetIndex: Record<TimeSlotType, number> = { morning: 0, lunch: 1, dinner: 2 };
 
+  // The hours each band covers, matching the labels shown on home.
+  const slotHours: Record<TimeSlotType, [number, number]> = {
+    morning: [5, 11],
+    lunch: [11, 17],
+    dinner: [17, 24],
+  };
+
+  /**
+   * Stamp the moment with the wall clock when it falls inside the band being
+   * recorded, and pull it into the band otherwise — demoing the morning band at
+   * night should not label the photo 22:30.
+   */
+  const timestampForSlot = (): string => {
+    const now = new Date();
+    const [from, to] = slotHours[slotKey];
+    const hour = Math.min(Math.max(now.getHours(), from), to - 1);
+    return `${String(hour).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+  };
+
   const presets = isParent
     ? [
         {
@@ -93,7 +112,7 @@ export const CameraCaptureModal: React.FC<CameraCaptureModalProps> = ({
     id: `moment_${Date.now()}`,
     type: momentType,
     mediaUrl,
-    timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false }),
+    timestamp: timestampForSlot(),
     authorRole: activeRole,
     authorNameMn: currentUser.nameMn,
     authorNameKo: currentUser.nameKo,
