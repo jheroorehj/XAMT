@@ -82,7 +82,8 @@ export const INITIAL_DAYS_DATA: Record<string, DayData> = {
           authorRole: 'parent',
           authorNameMn: 'Ээж Сараа',
           authorNameKo: '엄마 Сараа',
-          authorEmoji: '🦌'
+          authorEmoji: '🦌',
+          syncState: 'pending'
         },
         childMoment: {
           id: 'c_dinner_0819',

@@ -16,11 +16,24 @@ export interface Translations {
 
   // Home CTA & Slot Status
   homePrimaryRecordBtn: string;
+  homeRecordAgainBtn: string;
   homeSlotActive: string;
   homeSlotCompleted: string;
   homeSlotUpcoming: string;
-  homeSlotMissed: string;
-  homeSlotMissedUpload: string;
+  homeSlotOpen: string;          // an earlier band, still open to fill
+  homeShareLaterBtn: string;     // fill in an earlier band
+
+  // Home - peer status (a single line, never the photo itself)
+  homePeerShared: string;        // "{name} also shared {slot}"
+  homePeerWaiting: string;       // "{name} hasn't shared yet"
+
+  // Home - offline sync
+  homeSyncPending: string;       // "{n} waiting for a connection"
+  homeSyncDone: string;
+
+  // Home - bridge to the ХАМТ tab
+  homeBridgeConnected: string;   // "{n} moments came together today"
+  homeBridgeEmpty: string;
 
   // Time Slots
   slotMorning: string;
@@ -78,26 +91,36 @@ export const translations: Record<Language, Translations> = {
     appSubtitle: 'Хол байсан ч, өдрийг хамтдаа',
 
     guideToggleLabel: 'Ашиглах заавар',
-    guideContent: 'Өглөө, өдөр, орой тус бүр нэг удаа тэмдэглэнэ. Цаг хоцорсон тохиолдолд зураг эсвэл богино бичлэг нөхөж оруулах боломжтой.',
+    guideContent: 'Өглөө, өдөр, орой гэсэн гурван цагийн туршид өөрт таарсан агшинд зургаа хуваалцаарай. Яарах шаардлагагүй. Интернэт салсан ч зураг хадгалагдаж, холбогдмогц гэр бүлдээ хүрнэ.',
 
     navHome: 'Нүүр',
     navHamtTimeline: 'ХАМТ',
     navCalendarDiary: 'Өдрийн тэмдэглэл',
     navVoice: 'Дуут яриа',
 
-    homePrimaryRecordBtn: 'Агшин бүртгэх',
-    homeSlotActive: 'Одоогийн цаг',
-    homeSlotCompleted: 'Бүртгэсэн',
-    homeSlotUpcoming: 'Хүлээгдэж буй',
-    homeSlotMissed: 'Хоцорсон',
-    homeSlotMissedUpload: 'Оруулах',
+    homePrimaryRecordBtn: 'Одоо хуваалцах',
+    homeRecordAgainBtn: 'Дахин хуваалцах',
+    homeSlotActive: 'Одоо',
+    homeSlotCompleted: 'Хуваалцсан',
+    homeSlotUpcoming: 'Удахгүй',
+    homeSlotOpen: 'Нээлттэй',
+    homeShareLaterBtn: 'Одоо нөхөж хуваалцах',
+
+    homePeerShared: '{name} ч бас хуваалцжээ',
+    homePeerWaiting: '{name} хараахан хуваалцаагүй байна',
+
+    homeSyncPending: '{n} агшин холболт хүлээж байна',
+    homeSyncDone: 'Бүх агшин хуваалцагдсан',
+
+    homeBridgeConnected: 'Өнөөдөр {n} агшин холбогдлоо',
+    homeBridgeEmpty: 'ХАМТ хуудсаар хамтдаа үзэх',
 
     slotMorning: 'Өглөө',
-    slotMorningTime: '07:15',
+    slotMorningTime: '05-11',
     slotLunch: 'Өдөр',
-    slotLunchTime: '12:40',
+    slotLunchTime: '11-17',
     slotDinner: 'Орой',
-    slotDinnerTime: '19:20',
+    slotDinnerTime: '17-24',
 
     captureModalTitle: 'Агшин үлдээх',
     takeLandscapePhoto: 'Хэвтээ зураг авах',
@@ -140,26 +163,36 @@ export const translations: Record<Language, Translations> = {
     appSubtitle: '멀리 있어도, 하루는 함께',
 
     guideToggleLabel: '이용 방법',
-    guideContent: '아침·점심·저녁에 한 번씩 기록합니다. 시간을 놓치면 사진 또는 짧은 영상을 업로드할 수 있습니다.',
+    guideContent: '아침·오후·밤, 세 시간대 안에서 나누고 싶은 순간에 편하게 남기면 됩니다. 서두르지 않아도 괜찮아요. 인터넷이 끊겨도 사진은 저장되고, 연결되면 가족에게 전해집니다.',
 
     navHome: '홈',
     navHamtTimeline: 'ХАМТ',
     navCalendarDiary: '공유일기',
     navVoice: '음성 기록',
 
-    homePrimaryRecordBtn: '순간 기록하기',
-    homeSlotActive: '지금 기록 가능',
-    homeSlotCompleted: '기록 완료',
-    homeSlotUpcoming: '예정',
-    homeSlotMissed: '놓친 시간',
-    homeSlotMissedUpload: '업로드',
+    homePrimaryRecordBtn: '지금 나누기',
+    homeRecordAgainBtn: '하나 더 나누기',
+    homeSlotActive: '지금',
+    homeSlotCompleted: '나눴어요',
+    homeSlotUpcoming: '아직 이르네요',
+    homeSlotOpen: '아직 열려 있어요',
+    homeShareLaterBtn: '지금 나누기',
+
+    homePeerShared: '{name}도 나눴어요',
+    homePeerWaiting: '{name}은 아직이에요',
+
+    homeSyncPending: '{n}개가 연결을 기다리고 있어요',
+    homeSyncDone: '모두 전해졌어요',
+
+    homeBridgeConnected: '오늘 {n}개의 순간이 이어졌어요',
+    homeBridgeEmpty: 'ХАМТ에서 함께 보기',
 
     slotMorning: '아침',
-    slotMorningTime: '07:15',
-    slotLunch: '점심',
-    slotLunchTime: '12:40',
-    slotDinner: '저녁',
-    slotDinnerTime: '19:20',
+    slotMorningTime: '05-11',
+    slotLunch: '오후',
+    slotLunchTime: '11-17',
+    slotDinner: '밤',
+    slotDinnerTime: '17-24',
 
     captureModalTitle: '순간 남기기',
     takeLandscapePhoto: '가로 사진 촬영',

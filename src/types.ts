@@ -20,13 +20,16 @@ export interface MediaMoment {
   authorNameKo: string;
   authorEmoji: string;
   duration?: string; // for video e.g. "0:08"
+  // Offline-first: a moment is captured on the device, then uploaded once the
+  // herder camp or dormitory regains a connection.
+  syncState?: 'pending' | 'synced';
 }
 
 export interface TimeSlotRecord {
   slot: TimeSlotType;
   parentMoment?: MediaMoment;
   childMoment?: MediaMoment;
-  status: 'completed' | 'active' | 'upcoming' | 'missed';
+  status: 'completed' | 'active' | 'upcoming';
 }
 
 export interface VoiceConversation {

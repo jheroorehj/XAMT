@@ -91,7 +91,7 @@ export const Header: React.FC<HeaderProps> = ({
               }`}
             >
               <Sunrise className="w-2.5 h-2.5" />
-              {t.slotMorning} (07:15)
+              {t.slotMorning}
             </button>
             <button
               onClick={() => onSlotTimeChange('lunch')}
@@ -102,7 +102,7 @@ export const Header: React.FC<HeaderProps> = ({
               }`}
             >
               <Sun className="w-2.5 h-2.5" />
-              {t.slotLunch} (12:40)
+              {t.slotLunch}
             </button>
             <button
               onClick={() => onSlotTimeChange('dinner')}
@@ -113,7 +113,7 @@ export const Header: React.FC<HeaderProps> = ({
               }`}
             >
               <Moon className="w-2.5 h-2.5" />
-              {t.slotDinner} (19:20)
+              {t.slotDinner}
             </button>
           </div>
 
