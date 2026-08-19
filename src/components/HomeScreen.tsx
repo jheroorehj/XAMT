@@ -14,6 +14,7 @@ import {
   ArrowRight,
   CloudOff,
 } from 'lucide-react';
+import { FamilyAvatar } from './FamilyAvatar';
 
 interface HomeScreenProps {
   language: Language;
@@ -21,7 +22,7 @@ interface HomeScreenProps {
   activeSlotTime: TimeSlotType;
   activeRole: 'parent' | 'child';
   onOpenCapture: (slot: TimeSlotType, mode: 'photo' | 'video' | 'upload') => void;
-  onNavigateToSetLog: () => void;
+  onNavigateToHamt: () => void;
   onViewMedia: (momentId: string) => void;
 }
 
@@ -39,7 +40,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
   activeSlotTime,
   activeRole,
   onOpenCapture,
-  onNavigateToSetLog,
+  onNavigateToHamt,
   onViewMedia,
 }) => {
   const t = translations[language];
@@ -151,7 +152,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
           they shared is what the ХАМТ tab is for.
         */}
         <div className="flex items-center gap-1.5 mt-3 text-[12px] text-[#5E7360]">
-          <span>{peerProfile.emoji}</span>
+          <FamilyAvatar role={peerProfile.role} size={18} />
           <span className={peerActiveMoment ? 'font-semibold text-[#3E6B48]' : ''}>
             {fill(
               peerActiveMoment ? t.homePeerShared : t.homePeerWaiting,
@@ -223,7 +224,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
 
       {/* 4. The bridge to ХАМТ — carries today's reason to go there */}
       <button
-        onClick={onNavigateToSetLog}
+        onClick={onNavigateToHamt}
         className="w-full py-3 px-4 rounded-xl bg-[#EFEBE0] hover:bg-[#E5E0D2] text-[#243327] flex items-center justify-between transition-all border border-[#DFD8C7]"
       >
         <span className="text-[13px] font-bold text-[#1E3022]">

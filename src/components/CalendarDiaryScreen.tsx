@@ -79,7 +79,7 @@ export const CalendarDiaryScreen: React.FC<CalendarDiaryScreenProps> = ({
                 onClick={() => onSelectDate(c.dateStr)}
                 className={`py-2 rounded-xl flex flex-col items-center justify-center transition-all relative ${
                   isSelected
-                    ? 'bg-[#2E7D32] text-white shadow-xs font-bold'
+                    ? 'bg-[#3E6B48] text-white shadow-xs font-bold'
                     : c.hasData
                     ? 'bg-[#FAF8F2] text-[#1E3022] hover:bg-[#EFECE3] border border-[#E8E2D5]'
                     : 'text-[#9AA59B]'
@@ -87,7 +87,7 @@ export const CalendarDiaryScreen: React.FC<CalendarDiaryScreenProps> = ({
               >
                 <span className="text-xs">{c.day}</span>
                 {c.hasData && (
-                  <span className={`text-[9px] mt-0.5 ${isSelected ? 'text-white' : 'text-[#2E7D32]'}`}>
+                  <span className={`text-[9px] mt-0.5 ${isSelected ? 'text-white' : 'text-[#3E6B48]'}`}>
                     ●
                   </span>
                 )}
@@ -100,7 +100,7 @@ export const CalendarDiaryScreen: React.FC<CalendarDiaryScreenProps> = ({
       {/* 2. Family Shared Diary */}
       <div className="bg-[#FFFDF9] rounded-2xl p-4.5 border border-[#E3DCBD] shadow-xs space-y-3">
         <div className="flex items-center gap-2 border-b border-[#EBE3CD] pb-2.5">
-          <BookOpen className="w-4 h-4 text-[#2E7D32]" />
+          <BookOpen className="w-4 h-4 text-[#3E6B48]" />
           <h2 className="font-bold text-sm text-[#1E3022]">
             {t.diaryTitle}
           </h2>
@@ -124,7 +124,7 @@ export const CalendarDiaryScreen: React.FC<CalendarDiaryScreenProps> = ({
         <div className="bg-white rounded-2xl p-4 border border-[#E5E0D5] shadow-xs space-y-3">
           <div className="flex items-center justify-between border-b border-[#EFECE4] pb-2">
             <div className="flex items-center gap-1.5">
-              <Mic className="w-4 h-4 text-[#2E7D32]" />
+              <Mic className="w-4 h-4 text-[#3E6B48]" />
               <span className="font-bold text-xs text-[#1E3022]">
                 {language === 'mn' ? 'Өдрийн дуут ярианы бичлэг' : '오늘의 음성 대화 기록'}
               </span>
@@ -164,7 +164,7 @@ export const CalendarDiaryScreen: React.FC<CalendarDiaryScreenProps> = ({
                     {/* Audio Player Button */}
                     <button
                       onClick={() => setPlayingVoiceId(isPlaying ? null : log.id)}
-                      className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#2E7D32] text-white text-[11px] font-semibold hover:bg-[#256629] shadow-2xs"
+                      className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#3E6B48] text-white text-[11px] font-semibold hover:bg-[#345B3D] shadow-2xs"
                     >
                       {isPlaying ? (
                         <>
@@ -182,14 +182,14 @@ export const CalendarDiaryScreen: React.FC<CalendarDiaryScreenProps> = ({
 
                   {/* Audio Waveform bar */}
                   <div className="flex items-center gap-1 h-3.5 bg-white/70 px-2 rounded-md">
-                    <Volume2 className="w-3 h-3 text-[#2E7D32]" />
+                    <Volume2 className="w-3 h-3 text-[#3E6B48]" />
                     <div className="flex-1 flex items-center gap-0.5 h-2">
                       {[30, 70, 40, 90, 60, 30, 80, 50, 90, 40, 60, 30, 70].map((val, idx) => (
                         <span
                           key={idx}
                           style={{ height: `${val}%` }}
                           className={`flex-1 rounded-full ${
-                            isPlaying ? 'bg-[#2E7D32] animate-pulse' : 'bg-[#ADC5B0]'
+                            isPlaying ? 'bg-[#3E6B48] animate-pulse' : 'bg-[#ADC5B0]'
                           }`}
                         />
                       ))}

@@ -1,6 +1,6 @@
 {
   "name": "ХАМТ",
-  "description": "멀리 떨어진 가족이 아침·점심·저녁 일상을 나란히 기록하고 공유일기로 엮는 고감도 모바일 프로토타입",
+  "description": "멀리 떨어진 가족이 아침·오후·밤 일상을 나란히 기록하고 공유일기로 엮는 모바일 프로토타입",
   "requestFramePermissions": [
     "camera",
     "microphone"

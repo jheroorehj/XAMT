@@ -5,7 +5,7 @@ import { INITIAL_DAYS_DATA } from './mockData';
 import { Header } from './components/Header';
 import { Navigation } from './components/Navigation';
 import { HomeScreen } from './components/HomeScreen';
-import { SetLogScreen } from './components/SetLogScreen';
+import { HamtTimelineScreen } from './components/HamtTimelineScreen';
 import { CalendarDiaryScreen } from './components/CalendarDiaryScreen';
 import { AIVoiceModal } from './components/AIVoiceModal';
 import { CameraCaptureModal } from './components/CameraCaptureModal';
@@ -15,7 +15,7 @@ import { Smartphone, Monitor } from 'lucide-react';
 
 export default function App() {
   const [language, setLanguage] = useState<Language>('mn');
-  const [activeTab, setActiveTab] = useState<'home' | 'setlog' | 'calendar'>('home');
+  const [activeTab, setActiveTab] = useState<'home' | 'hamt' | 'calendar'>('home');
   const [activeRole, setActiveRole] = useState<'parent' | 'child'>('parent');
   const [activeSlotTime, setActiveSlotTime] = useState<TimeSlotType>('morning');
   const [selectedDate, setSelectedDate] = useState<string>('2026-08-19');
@@ -108,11 +108,11 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F3EFE6] text-[#243327] font-sans antialiased flex flex-col items-center justify-start sm:py-6 selection:bg-[#2E7D32]/20">
+    <div className="min-h-screen bg-[#F3EFE6] text-[#243327] font-sans antialiased flex flex-col items-center justify-start sm:py-6 selection:bg-[#3E6B48]/20">
       
       {/* View Switcher (Desktop only) */}
       <aside className="w-full max-w-md px-4 py-2 mb-2 hidden sm:flex items-center justify-between text-xs text-[#5E6B60] bg-white/70 backdrop-blur-sm rounded-xl border border-[#DFD8C8]">
-        <span className="font-bold text-[#2E7D32]">ХАМТ (HAMT) Prototype</span>
+        <span className="font-bold text-[#3E6B48]">ХАМТ (HAMT) Prototype</span>
         <button
           onClick={() => setIsPhoneFrame(!isPhoneFrame)}
           className="flex items-center gap-1 px-2 py-0.5 rounded-lg bg-[#EFECE4] hover:bg-[#E3DEC] text-[11px] font-semibold text-[#3C4A3E]"
@@ -151,13 +151,13 @@ export default function App() {
               activeSlotTime={activeSlotTime}
               activeRole={activeRole}
               onOpenCapture={handleOpenCapture}
-              onNavigateToSetLog={() => setActiveTab('setlog')}
+              onNavigateToHamt={() => setActiveTab('hamt')}
               onViewMedia={(id) => setPreviewMomentId(id)}
             />
           )}
 
-          {activeTab === 'setlog' && (
-            <SetLogScreen
+          {activeTab === 'hamt' && (
+            <HamtTimelineScreen
               language={language}
               dayData={currentDayData}
               onViewMedia={(id) => setPreviewMomentId(id)}

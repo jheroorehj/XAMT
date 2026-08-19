@@ -4,8 +4,8 @@ import { translations } from '../locales/translations';
 import { Home, Layers, BookOpen, Mic } from 'lucide-react';
 
 interface NavigationProps {
-  currentTab: 'home' | 'setlog' | 'calendar';
-  onTabChange: (tab: 'home' | 'setlog' | 'calendar') => void;
+  currentTab: 'home' | 'hamt' | 'calendar';
+  onTabChange: (tab: 'home' | 'hamt' | 'calendar') => void;
   language: Language;
   onOpenAiVoice: () => void;
 }
@@ -26,7 +26,7 @@ export const Navigation: React.FC<NavigationProps> = ({
           onClick={() => onTabChange('home')}
           className={`flex flex-col items-center justify-center flex-1 py-1 rounded-xl transition-all ${
             currentTab === 'home'
-              ? 'text-[#2E7D32] font-bold'
+              ? 'text-[#3E6B48] font-bold'
               : 'text-[#848E84] hover:text-[#4A544A]'
           }`}
         >
@@ -38,14 +38,14 @@ export const Navigation: React.FC<NavigationProps> = ({
 
         {/* 2. ХАМТ Timeline */}
         <button
-          onClick={() => onTabChange('setlog')}
+          onClick={() => onTabChange('hamt')}
           className={`flex flex-col items-center justify-center flex-1 py-1 rounded-xl transition-all ${
-            currentTab === 'setlog'
-              ? 'text-[#2E7D32] font-bold'
+            currentTab === 'hamt'
+              ? 'text-[#3E6B48] font-bold'
               : 'text-[#848E84] hover:text-[#4A544A]'
           }`}
         >
-          <div className={`p-1 rounded-lg ${currentTab === 'setlog' ? 'bg-[#EBF3EC]' : ''}`}>
+          <div className={`p-1 rounded-lg ${currentTab === 'hamt' ? 'bg-[#EBF3EC]' : ''}`}>
             <Layers className="w-5 h-5" />
           </div>
           <span className="text-[11px] mt-0.5">{t.navHamtTimeline}</span>
@@ -54,12 +54,12 @@ export const Navigation: React.FC<NavigationProps> = ({
         {/* 3. AI Voice in Menu Bar */}
         <button
           onClick={onOpenAiVoice}
-          className="flex flex-col items-center justify-center flex-1 py-1 group text-[#2E7D32]"
+          className="flex flex-col items-center justify-center flex-1 py-1 group text-[#3E6B48]"
         >
-          <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-[#2E7D32] to-[#458C54] text-white flex items-center justify-center shadow-md shadow-[#2E7D32]/25 group-hover:scale-105 active:scale-95 transition-transform">
+          <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-[#3E6B48] to-[#5B8A65] text-white flex items-center justify-center shadow-md shadow-[#3E6B48]/25 group-hover:scale-105 active:scale-95 transition-transform">
             <Mic className="w-4 h-4 text-white" />
           </div>
-          <span className="text-[11px] mt-0.5 font-bold text-[#2E7D32]">{t.navVoice}</span>
+          <span className="text-[11px] mt-0.5 font-bold text-[#3E6B48]">{t.navVoice}</span>
         </button>
 
         {/* 4. Calendar & Diary */}
@@ -67,7 +67,7 @@ export const Navigation: React.FC<NavigationProps> = ({
           onClick={() => onTabChange('calendar')}
           className={`flex flex-col items-center justify-center flex-1 py-1 rounded-xl transition-all ${
             currentTab === 'calendar'
-              ? 'text-[#2E7D32] font-bold'
+              ? 'text-[#3E6B48] font-bold'
               : 'text-[#848E84] hover:text-[#4A544A]'
           }`}
         >

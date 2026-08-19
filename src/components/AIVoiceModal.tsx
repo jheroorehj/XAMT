@@ -12,6 +12,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { USER_PROFILES } from '../mockData';
+import { FamilyAvatar } from './FamilyAvatar';
 
 interface AIVoiceModalProps {
   isOpen: boolean;
@@ -109,7 +110,7 @@ export const AIVoiceModal: React.FC<AIVoiceModalProps> = ({
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/60 backdrop-blur-xs p-0 sm:p-4">
       <div className="w-full max-w-md bg-[#FAF9F5] rounded-t-3xl sm:rounded-3xl border border-[#E5E0D5] shadow-2xl overflow-hidden animate-in fade-in slide-in-from-bottom duration-200 flex flex-col max-h-[88vh]">
         {/* Header */}
-        <div className="px-5 py-3.5 bg-[#2E7D32] text-white flex items-center justify-between">
+        <div className="px-5 py-3.5 bg-[#3E6B48] text-white flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Mic className="w-4 h-4 text-white" />
             <h3 className="font-bold text-sm">
@@ -139,7 +140,7 @@ export const AIVoiceModal: React.FC<AIVoiceModalProps> = ({
                 }}
                 className={`px-2.5 py-1 rounded-lg text-xs font-semibold flex items-center gap-1 transition-all ${
                   isChild
-                    ? 'bg-[#2E7D32] text-white shadow-xs'
+                    ? 'bg-[#3E6B48] text-white shadow-xs'
                     : 'bg-white/60 text-[#4D5A4F] hover:bg-white'
                 }`}
               >
@@ -153,7 +154,7 @@ export const AIVoiceModal: React.FC<AIVoiceModalProps> = ({
                 }}
                 className={`px-2.5 py-1 rounded-lg text-xs font-semibold flex items-center gap-1 transition-all ${
                   !isChild
-                    ? 'bg-[#2E7D32] text-white shadow-xs'
+                    ? 'bg-[#3E6B48] text-white shadow-xs'
                     : 'bg-white/60 text-[#4D5A4F] hover:bg-white'
                 }`}
               >
@@ -168,7 +169,7 @@ export const AIVoiceModal: React.FC<AIVoiceModalProps> = ({
             <div className="text-center py-6 space-y-4">
               <button
                 onClick={handleStartRecording}
-                className="w-18 h-18 rounded-full bg-[#2E7D32] text-white flex items-center justify-center shadow-lg shadow-[#2E7D32]/30 hover:scale-105 active:scale-95 transition-transform mx-auto"
+                className="w-18 h-18 rounded-full bg-[#3E6B48] text-white flex items-center justify-center shadow-lg shadow-[#3E6B48]/30 hover:scale-105 active:scale-95 transition-transform mx-auto"
               >
                 <Mic className="w-8 h-8" />
               </button>
@@ -179,15 +180,15 @@ export const AIVoiceModal: React.FC<AIVoiceModalProps> = ({
                 </h4>
                 <p className="text-xs text-[#6A786C] mt-1">
                   {language === 'mn'
-                    ? `${speakerProfile.nameMn} (${speakerProfile.emoji}) хоолойгоор ярих`
-                    : `${speakerProfile.nameKo} (${speakerProfile.emoji}) 목소리로 녹음`}
+                    ? `${speakerProfile.nameMn} хоолойгоор ярих`
+                    : `${speakerProfile.nameKo} 목소리로 녹음`}
                 </p>
               </div>
 
               {/* Sample Prompt */}
               <button
                 onClick={handleStartRecording}
-                className="w-full text-left p-3 rounded-xl bg-white border border-[#E0DBD0] text-xs text-[#334237] transition-all hover:border-[#2E7D32]"
+                className="w-full text-left p-3 rounded-xl bg-white border border-[#E0DBD0] text-xs text-[#334237] transition-all hover:border-[#3E6B48]"
               >
                 <span className="text-[10px] font-bold text-[#7A867B] block mb-1">
                   {language === 'mn' ? 'Жишээ яриа' : '예시 문장'}:
@@ -207,7 +208,7 @@ export const AIVoiceModal: React.FC<AIVoiceModalProps> = ({
                   <span
                     key={i}
                     style={{ height: `${h}px` }}
-                    className="w-1.5 bg-[#2E7D32] rounded-full animate-pulse"
+                    className="w-1.5 bg-[#3E6B48] rounded-full animate-pulse"
                   />
                 ))}
               </div>
@@ -220,7 +221,7 @@ export const AIVoiceModal: React.FC<AIVoiceModalProps> = ({
 
               <button
                 onClick={handleStopRecording}
-                className="w-full py-3 rounded-xl bg-[#2E7D32] text-white font-bold text-xs flex items-center justify-center gap-2"
+                className="w-full py-3 rounded-xl bg-[#3E6B48] text-white font-bold text-xs flex items-center justify-center gap-2"
               >
                 <Square className="w-4 h-4 fill-white" />
                 <span>{t.aiVoiceStopBtn}</span>
@@ -231,8 +232,8 @@ export const AIVoiceModal: React.FC<AIVoiceModalProps> = ({
           {/* Processing State */}
           {step === 'processing' && (
             <div className="text-center py-8 space-y-3">
-              <div className="w-12 h-12 rounded-full bg-[#EBF3EC] border-2 border-[#2E7D32] flex items-center justify-center mx-auto animate-spin">
-                <Sparkles className="w-5 h-5 text-[#2E7D32]" />
+              <div className="w-12 h-12 rounded-full bg-[#EBF3EC] border-2 border-[#3E6B48] flex items-center justify-center mx-auto animate-spin">
+                <Sparkles className="w-5 h-5 text-[#3E6B48]" />
               </div>
               <p className="text-xs text-[#526054] font-medium">
                 {t.aiVoiceProcessing}
@@ -245,7 +246,7 @@ export const AIVoiceModal: React.FC<AIVoiceModalProps> = ({
             <div className="space-y-3 py-1">
               <div className="bg-white p-3 rounded-xl border border-[#E0DBD0]">
                 <span className="text-[10px] font-bold text-[#7A867B] block">
-                  {speakerProfile.emoji} {language === 'mn' ? speakerProfile.nameMn : speakerProfile.nameKo}
+                  <FamilyAvatar role={speakerProfile.role} size={12} /> {language === 'mn' ? speakerProfile.nameMn : speakerProfile.nameKo}
                 </span>
                 <p className="text-xs text-[#2A382D] mt-0.5">
                   "{recordedText}"
@@ -256,7 +257,7 @@ export const AIVoiceModal: React.FC<AIVoiceModalProps> = ({
               <div className="bg-[#F8F5EC] p-3.5 rounded-xl border border-[#DBCFA8] space-y-2">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-1.5">
-                    <span className="text-xl">{mirroredProfile.emoji}</span>
+                    <FamilyAvatar role={mirroredProfile.role} size={22} />
                     <span className="text-xs font-bold text-[#1E3022]">
                       {language === 'mn' ? mirroredProfile.nameMn : mirroredProfile.nameKo} (AI)
                     </span>
@@ -267,7 +268,7 @@ export const AIVoiceModal: React.FC<AIVoiceModalProps> = ({
                 <div className="bg-white p-2 rounded-lg border border-[#E5DEC9] flex items-center gap-2">
                   <button
                     onClick={() => setIsPlayingAudio(!isPlayingAudio)}
-                    className="w-7 h-7 rounded-full bg-[#2E7D32] text-white flex items-center justify-center"
+                    className="w-7 h-7 rounded-full bg-[#3E6B48] text-white flex items-center justify-center"
                   >
                     {isPlayingAudio ? (
                       <Pause className="w-3.5 h-3.5 fill-white" />
@@ -281,7 +282,7 @@ export const AIVoiceModal: React.FC<AIVoiceModalProps> = ({
                         key={i}
                         style={{ height: `${val}%` }}
                         className={`flex-1 rounded-full ${
-                          isPlayingAudio ? 'bg-[#2E7D32] animate-pulse' : 'bg-[#DDD5C5]'
+                          isPlayingAudio ? 'bg-[#3E6B48] animate-pulse' : 'bg-[#DDD5C5]'
                         }`}
                       />
                     ))}
@@ -295,7 +296,7 @@ export const AIVoiceModal: React.FC<AIVoiceModalProps> = ({
 
               <button
                 onClick={handleApplyToDiary}
-                className="w-full py-3 rounded-xl bg-[#2E7D32] text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm"
+                className="w-full py-3 rounded-xl bg-[#3E6B48] text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm"
               >
                 <span>{t.aiVoiceSaveToDiaryBtn}</span>
               </button>
@@ -305,7 +306,7 @@ export const AIVoiceModal: React.FC<AIVoiceModalProps> = ({
           {/* Reflected Complete State */}
           {step === 'reflected' && (
             <div className="text-center py-6 space-y-3">
-              <div className="w-12 h-12 rounded-full bg-[#EBF3EC] border border-[#2E7D32] flex items-center justify-center mx-auto text-[#2E7D32]">
+              <div className="w-12 h-12 rounded-full bg-[#EBF3EC] border border-[#3E6B48] flex items-center justify-center mx-auto text-[#3E6B48]">
                 <CheckCircle2 className="w-7 h-7" />
               </div>
               <h4 className="font-bold text-sm text-[#1E3022]">
@@ -327,7 +328,7 @@ export const AIVoiceModal: React.FC<AIVoiceModalProps> = ({
                     onClose();
                     onGoToDiary();
                   }}
-                  className="flex-1 py-2.5 rounded-xl bg-[#2E7D32] text-white text-xs font-bold flex items-center justify-center gap-1"
+                  className="flex-1 py-2.5 rounded-xl bg-[#3E6B48] text-white text-xs font-bold flex items-center justify-center gap-1"
                 >
                   <span>{t.navCalendarDiary}</span>
                   <ArrowRight className="w-3.5 h-3.5" />

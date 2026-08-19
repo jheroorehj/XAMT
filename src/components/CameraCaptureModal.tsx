@@ -13,6 +13,7 @@ import {
   Moon 
 } from 'lucide-react';
 import { USER_PROFILES } from '../mockData';
+import { FamilyAvatar } from './FamilyAvatar';
 
 interface CameraCaptureModalProps {
   isOpen: boolean;
@@ -127,7 +128,7 @@ export const CameraCaptureModal: React.FC<CameraCaptureModalProps> = ({
         {/* Header */}
         <div className="px-5 py-3.5 bg-[#FAF9F5] border-b border-[#EBE6DC] flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-lg bg-[#EBF3EC] text-[#2E7D32] flex items-center justify-center font-bold">
+            <div className="w-7 h-7 rounded-lg bg-[#EBF3EC] text-[#3E6B48] flex items-center justify-center font-bold">
               {slotKey === 'morning' ? <Sunrise className="w-4 h-4" /> : slotKey === 'lunch' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </div>
             <div>
@@ -135,7 +136,7 @@ export const CameraCaptureModal: React.FC<CameraCaptureModalProps> = ({
                 {slotTitle} • {t.captureModalTitle}
               </h3>
               <p className="text-[10px] text-[#6A786C]">
-                {currentUser.emoji} {language === 'mn' ? currentUser.nameMn : currentUser.nameKo}
+                <FamilyAvatar role={activeRole} size={14} /> {language === 'mn' ? currentUser.nameMn : currentUser.nameKo}
               </p>
             </div>
           </div>
@@ -153,7 +154,7 @@ export const CameraCaptureModal: React.FC<CameraCaptureModalProps> = ({
           <button
             onClick={() => setMode('photo')}
             className={`py-1.5 rounded-lg flex items-center justify-center gap-1 transition-all ${
-              mode === 'photo' ? 'bg-[#2E7D32] text-white shadow-xs' : 'text-[#556357]'
+              mode === 'photo' ? 'bg-[#3E6B48] text-white shadow-xs' : 'text-[#556357]'
             }`}
           >
             <Camera className="w-3.5 h-3.5" />
@@ -162,7 +163,7 @@ export const CameraCaptureModal: React.FC<CameraCaptureModalProps> = ({
           <button
             onClick={() => setMode('video')}
             className={`py-1.5 rounded-lg flex items-center justify-center gap-1 transition-all ${
-              mode === 'video' ? 'bg-[#2E7D32] text-white shadow-xs' : 'text-[#556357]'
+              mode === 'video' ? 'bg-[#3E6B48] text-white shadow-xs' : 'text-[#556357]'
             }`}
           >
             <Video className="w-3.5 h-3.5" />
@@ -171,7 +172,7 @@ export const CameraCaptureModal: React.FC<CameraCaptureModalProps> = ({
           <button
             onClick={handleInstantUpload}
             className={`py-1.5 rounded-lg flex items-center justify-center gap-1 transition-all ${
-              mode === 'upload' ? 'bg-[#2E7D32] text-white shadow-xs' : 'text-[#556357]'
+              mode === 'upload' ? 'bg-[#3E6B48] text-white shadow-xs' : 'text-[#556357]'
             }`}
           >
             <UploadCloud className="w-3.5 h-3.5" />
@@ -203,7 +204,7 @@ export const CameraCaptureModal: React.FC<CameraCaptureModalProps> = ({
             )}
 
             <div className="absolute top-2 left-2 px-2.5 py-1 rounded-full bg-black/60 text-white text-[10px] font-semibold">
-              {currentUser.emoji} {language === 'mn' ? currentUser.nameMn : currentUser.nameKo}
+              <FamilyAvatar role={activeRole} size={14} /> {language === 'mn' ? currentUser.nameMn : currentUser.nameKo}
             </div>
           </div>
 
@@ -213,7 +214,7 @@ export const CameraCaptureModal: React.FC<CameraCaptureModalProps> = ({
               <span className="font-bold">{t.sampleMediaLabel}:</span>
               <button
                 onClick={() => fileInputRef.current?.click()}
-                className="text-[#2E7D32] font-semibold underline flex items-center gap-1"
+                className="text-[#3E6B48] font-semibold underline flex items-center gap-1"
               >
                 <UploadCloud className="w-3 h-3" />
                 <span>{t.myFileUploadLabel}</span>
@@ -234,7 +235,7 @@ export const CameraCaptureModal: React.FC<CameraCaptureModalProps> = ({
                   onClick={() => setCapturedPreview(p.url)}
                   className={`p-1 rounded-xl border text-left flex flex-col items-center gap-1 transition-all ${
                     capturedPreview === p.url
-                      ? 'bg-[#EBF3EC] border-[#2E7D32]'
+                      ? 'bg-[#EBF3EC] border-[#3E6B48]'
                       : 'bg-white border-[#E0DBD0]'
                   }`}
                 >
@@ -257,7 +258,7 @@ export const CameraCaptureModal: React.FC<CameraCaptureModalProps> = ({
           {!capturedPreview ? (
             <button
               onClick={() => setCapturedPreview(slotPreset.url)}
-              className="w-full py-3 rounded-xl bg-[#2E7D32] hover:bg-[#256629] text-white font-bold text-xs flex items-center justify-center gap-2 shadow-xs"
+              className="w-full py-3 rounded-xl bg-[#3E6B48] hover:bg-[#345B3D] text-white font-bold text-xs flex items-center justify-center gap-2 shadow-xs"
             >
               <Camera className="w-4 h-4" />
               <span>{mode === 'video' ? t.recordLandscapeVideo : t.takeLandscapePhoto}</span>
@@ -273,7 +274,7 @@ export const CameraCaptureModal: React.FC<CameraCaptureModalProps> = ({
               </button>
               <button
                 onClick={handleSave}
-                className="flex-1 py-2.5 rounded-xl bg-[#2E7D32] text-white text-xs font-bold hover:bg-[#256629] flex items-center justify-center gap-1 shadow-xs"
+                className="flex-1 py-2.5 rounded-xl bg-[#3E6B48] text-white text-xs font-bold hover:bg-[#345B3D] flex items-center justify-center gap-1 shadow-xs"
               >
                 <Check className="w-4 h-4" />
                 <span>{t.saveRecord}</span>

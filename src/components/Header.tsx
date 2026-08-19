@@ -4,6 +4,7 @@ import { translations } from '../locales/translations';
 import { USER_PROFILES } from '../mockData';
 import { Clock, Sunrise, Sun, Moon, Globe, Sparkles } from 'lucide-react';
 import { XamtLogo } from './XamtLogo';
+import { FamilyAvatar } from './FamilyAvatar';
 
 interface HeaderProps {
   language: Language;
@@ -58,7 +59,7 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => onRoleChange(activeRole === 'parent' ? 'child' : 'parent')}
             className={pillClass}
           >
-            <span>{currentUser.emoji}</span>
+            <FamilyAvatar role={activeRole} size={16} />
             <span>{language === 'mn' ? currentUser.nameMn : currentUser.nameKo}</span>
           </button>
 

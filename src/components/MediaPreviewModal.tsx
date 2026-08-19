@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Language, MediaMoment } from '../types';
 import { X, Play, Pause, Volume2 } from 'lucide-react';
+import { FamilyAvatar } from './FamilyAvatar';
 
 interface MediaPreviewModalProps {
   moment: MediaMoment | null;
@@ -23,7 +24,7 @@ export const MediaPreviewModal: React.FC<MediaPreviewModalProps> = ({
         {/* Header */}
         <div className="p-3.5 bg-black/40 flex items-center justify-between border-b border-white/10">
           <div className="flex items-center gap-2">
-            <span className="text-xl">{moment.authorEmoji}</span>
+            <FamilyAvatar role={moment.authorRole} size={24} />
             <h3 className="font-bold text-xs text-white">
               {language === 'mn' ? moment.authorNameMn : moment.authorNameKo}
             </h3>
@@ -49,12 +50,12 @@ export const MediaPreviewModal: React.FC<MediaPreviewModalProps> = ({
             <div className="absolute inset-0 flex items-center justify-center bg-black/25">
               <button
                 onClick={() => setIsPlaying(!isPlaying)}
-                className="w-14 h-14 rounded-full bg-white/90 text-[#2E7D32] flex items-center justify-center shadow-xl hover:scale-110 active:scale-95 transition-transform"
+                className="w-14 h-14 rounded-full bg-white/90 text-[#3E6B48] flex items-center justify-center shadow-xl hover:scale-110 active:scale-95 transition-transform"
               >
                 {isPlaying ? (
-                  <Pause className="w-6 h-6 fill-[#2E7D32]" />
+                  <Pause className="w-6 h-6 fill-[#3E6B48]" />
                 ) : (
-                  <Play className="w-6 h-6 fill-[#2E7D32] translate-x-0.5" />
+                  <Play className="w-6 h-6 fill-[#3E6B48] translate-x-0.5" />
                 )}
               </button>
 

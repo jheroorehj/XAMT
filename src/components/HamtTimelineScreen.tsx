@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { DayData, Language, MediaMoment, TimeSlotType } from '../types';
 import { translations } from '../locales/translations';
 import { Play, Pause } from 'lucide-react';
+import { FamilyAvatar } from './FamilyAvatar';
 
-interface SetLogScreenProps {
+interface HamtTimelineScreenProps {
   language: Language;
   dayData: DayData;
   onViewMedia: (momentId: string) => void;
@@ -45,7 +46,7 @@ const AnalogClockIcon = ({ timeStr }: { timeStr: string }) => {
   );
 };
 
-export const SetLogScreen: React.FC<SetLogScreenProps> = ({
+export const HamtTimelineScreen: React.FC<HamtTimelineScreenProps> = ({
   language,
   dayData,
   onViewMedia,
@@ -89,7 +90,7 @@ export const SetLogScreen: React.FC<SetLogScreenProps> = ({
 
             {/* Top-Left: Unified Name & Emoji Overlay */}
             <div className="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-full bg-black/65 backdrop-blur-xs text-white text-[11px] font-semibold flex items-center gap-1.5 shadow-sm">
-              <span>{moment.authorEmoji}</span>
+              <FamilyAvatar role={moment.authorRole} size={16} withBackground />
               <span>{language === 'mn' ? moment.authorNameMn : moment.authorNameKo}</span>
             </div>
 
@@ -104,12 +105,12 @@ export const SetLogScreen: React.FC<SetLogScreenProps> = ({
               <div className="absolute inset-0 flex items-center justify-center bg-black/15">
                 <button
                   onClick={(e) => handleToggleVideo(e, moment.id)}
-                  className="w-11 h-11 rounded-full bg-white/90 text-[#2E7D32] flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-transform"
+                  className="w-11 h-11 rounded-full bg-white/90 text-[#3E6B48] flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-transform"
                 >
                   {isPlaying ? (
-                    <Pause className="w-5 h-5 fill-[#2E7D32]" />
+                    <Pause className="w-5 h-5 fill-[#3E6B48]" />
                   ) : (
-                    <Play className="w-5 h-5 fill-[#2E7D32] translate-x-0.5" />
+                    <Play className="w-5 h-5 fill-[#3E6B48] translate-x-0.5" />
                   )}
                 </button>
                 <span className="absolute bottom-2.5 right-2.5 px-2 py-0.5 rounded bg-black/60 text-white text-[10px] font-mono">
