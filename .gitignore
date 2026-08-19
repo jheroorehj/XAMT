@@ -1,0 +1,14 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+
+# Tooling / editor
+.claude/
+
+# Original source images (duplicated into public/moments/)
+sample/
