@@ -43,6 +43,8 @@ export const CameraCaptureModal: React.FC<CameraCaptureModalProps> = ({
   const isParent = activeRole === 'parent';
   const currentUser = USER_PROFILES.find((u) => u.role === activeRole) || USER_PROFILES[0];
 
+  const slotPresetIndex: Record<TimeSlotType, number> = { morning: 0, lunch: 1, dinner: 2 };
+
   const presets = isParent
     ? [
         {
@@ -73,6 +75,8 @@ export const CameraCaptureModal: React.FC<CameraCaptureModalProps> = ({
         }
       ];
 
+  const slotPreset = presets[slotPresetIndex[slotKey]] || presets[0];
+
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -81,20 +85,36 @@ export const CameraCaptureModal: React.FC<CameraCaptureModalProps> = ({
     }
   };
 
-  const handleSave = () => {
-    const newMoment: MediaMoment = {
-      id: `moment_${Date.now()}`,
-      type: mode === 'video' ? 'video' : 'photo',
-      mediaUrl: capturedPreview || presets[0].url,
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false }),
-      authorRole: activeRole,
-      authorNameMn: currentUser.nameMn,
-      authorNameKo: currentUser.nameKo,
-      authorEmoji: currentUser.emoji,
-      duration: mode === 'video' ? '0:08' : undefined
-    };
+  const buildMoment = (
+    mediaUrl: string,
+    momentType: 'photo' | 'video'
+  ): MediaMoment => ({
+    id: `moment_${Date.now()}`,
+    type: momentType,
+    mediaUrl,
+    timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false }),
+    authorRole: activeRole,
+    authorNameMn: currentUser.nameMn,
+    authorNameKo: currentUser.nameKo,
+    authorEmoji: currentUser.emoji,
+    duration: momentType === 'video' ? '0:08' : undefined,
+  });
 
-    onSaveMoment(slotKey, newMoment);
+  const handleSave = () => {
+    onSaveMoment(
+      slotKey,
+      buildMoment(capturedPreview || slotPreset.url, mode === 'video' ? 'video' : 'photo')
+    );
+    onClose();
+  };
+
+  /**
+   * Prototype shortcut: there is no upload backend yet, so tapping Upload
+   * records this band straight away with its sample image. Picking a real file
+   * is still available through the "my file" link below.
+   */
+  const handleInstantUpload = () => {
+    onSaveMoment(slotKey, buildMoment(slotPreset.url, 'photo'));
     onClose();
   };
 
@@ -149,10 +169,7 @@ export const CameraCaptureModal: React.FC<CameraCaptureModalProps> = ({
             <span>{language === 'mn' ? 'Бичлэг' : '영상 (0:08)'}</span>
           </button>
           <button
-            onClick={() => {
-              setMode('upload');
-              fileInputRef.current?.click();
-            }}
+            onClick={handleInstantUpload}
             className={`py-1.5 rounded-lg flex items-center justify-center gap-1 transition-all ${
               mode === 'upload' ? 'bg-[#2E7D32] text-white shadow-xs' : 'text-[#556357]'
             }`}
@@ -239,7 +256,7 @@ export const CameraCaptureModal: React.FC<CameraCaptureModalProps> = ({
         <div className="p-4 bg-[#FAF9F5] border-t border-[#EBE6DC] flex items-center justify-between gap-2">
           {!capturedPreview ? (
             <button
-              onClick={() => setCapturedPreview(presets[0].url)}
+              onClick={() => setCapturedPreview(slotPreset.url)}
               className="w-full py-3 rounded-xl bg-[#2E7D32] hover:bg-[#256629] text-white font-bold text-xs flex items-center justify-center gap-2 shadow-xs"
             >
               <Camera className="w-4 h-4" />

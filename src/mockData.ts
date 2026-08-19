@@ -58,7 +58,8 @@ export const INITIAL_DAYS_DATA: Record<string, DayData> = {
           authorNameMn: 'Ээж Сараа',
           authorNameKo: '엄마 Сараа',
           authorEmoji: '🦌',
-          duration: '0:08'
+          duration: '0:08',
+          syncState: 'pending'
         },
         childMoment: {
           id: 'c_lunch_0819',
@@ -73,18 +74,7 @@ export const INITIAL_DAYS_DATA: Record<string, DayData> = {
       },
       dinner: {
         slot: 'dinner',
-        status: 'completed',
-        parentMoment: {
-          id: 'p_dinner_0819',
-          type: 'photo',
-          mediaUrl: '/moments/dinner-parent.png',
-          timestamp: '19:20',
-          authorRole: 'parent',
-          authorNameMn: 'Ээж Сараа',
-          authorNameKo: '엄마 Сараа',
-          authorEmoji: '🦌',
-          syncState: 'pending'
-        },
+        status: 'active',
         childMoment: {
           id: 'c_dinner_0819',
           type: 'video',

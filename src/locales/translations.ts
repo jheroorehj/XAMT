@@ -24,8 +24,8 @@ export interface Translations {
   homeShareLaterBtn: string;     // fill in an earlier band
 
   // Home - peer status (a single line, never the photo itself)
-  homePeerShared: string;        // "{name} also shared {slot}"
-  homePeerWaiting: string;       // "{name} hasn't shared yet"
+  homePeerShared: string;        // "{name} recorded this band too"
+  homePeerWaiting: string;       // "{name} has not recorded yet"
 
   // Home - offline sync
   homeSyncPending: string;       // "{n} waiting for a connection"
@@ -91,26 +91,26 @@ export const translations: Record<Language, Translations> = {
     appSubtitle: 'Хол байсан ч, өдрийг хамтдаа',
 
     guideToggleLabel: 'Ашиглах заавар',
-    guideContent: 'Өглөө, өдөр, орой гэсэн гурван цагийн туршид өөрт таарсан агшинд зургаа хуваалцаарай. Яарах шаардлагагүй. Интернэт салсан ч зураг хадгалагдаж, холбогдмогц гэр бүлдээ хүрнэ.',
+    guideContent: 'Өглөө, өдөр, орой гэсэн гурван цагийн туршид өөрт таарсан агшинд зургаа бүртгээрэй. Яарах шаардлагагүй. Интернэт салсан ч зураг хадгалагдаж, холбогдмогц гэр бүлдээ хүрнэ.',
 
     navHome: 'Нүүр',
     navHamtTimeline: 'ХАМТ',
     navCalendarDiary: 'Өдрийн тэмдэглэл',
     navVoice: 'Дуут яриа',
 
-    homePrimaryRecordBtn: 'Одоо хуваалцах',
-    homeRecordAgainBtn: 'Дахин хуваалцах',
+    homePrimaryRecordBtn: 'Одоо бүртгэх',
+    homeRecordAgainBtn: 'Дахин бүртгэх',
     homeSlotActive: 'Одоо',
-    homeSlotCompleted: 'Хуваалцсан',
+    homeSlotCompleted: 'Бүртгэсэн',
     homeSlotUpcoming: 'Удахгүй',
     homeSlotOpen: 'Нээлттэй',
-    homeShareLaterBtn: 'Одоо нөхөж хуваалцах',
+    homeShareLaterBtn: 'Одоо нөхөж бүртгэх',
 
-    homePeerShared: '{name} ч бас хуваалцжээ',
-    homePeerWaiting: '{name} хараахан хуваалцаагүй байна',
+    homePeerShared: '{name} ч бас бүртгэсэн',
+    homePeerWaiting: '{name} хараахан бүртгээгүй байна',
 
     homeSyncPending: '{n} агшин холболт хүлээж байна',
-    homeSyncDone: 'Бүх агшин хуваалцагдсан',
+    homeSyncDone: 'Бүх агшин илгээгдсэн',
 
     homeBridgeConnected: 'Өнөөдөр {n} агшин холбогдлоо',
     homeBridgeEmpty: 'ХАМТ хуудсаар хамтдаа үзэх',
@@ -163,23 +163,23 @@ export const translations: Record<Language, Translations> = {
     appSubtitle: '멀리 있어도, 하루는 함께',
 
     guideToggleLabel: '이용 방법',
-    guideContent: '아침·오후·밤, 세 시간대 안에서 나누고 싶은 순간에 편하게 남기면 됩니다. 서두르지 않아도 괜찮아요. 인터넷이 끊겨도 사진은 저장되고, 연결되면 가족에게 전해집니다.',
+    guideContent: '아침·오후·밤, 세 시간대 안에서 기록하고 싶은 순간에 편하게 남기면 됩니다. 서두르지 않아도 괜찮아요. 인터넷이 끊겨도 사진은 저장되고, 연결되면 가족에게 전해집니다.',
 
     navHome: '홈',
     navHamtTimeline: 'ХАМТ',
     navCalendarDiary: '공유일기',
     navVoice: '음성 기록',
 
-    homePrimaryRecordBtn: '지금 나누기',
-    homeRecordAgainBtn: '하나 더 나누기',
+    homePrimaryRecordBtn: '지금 기록하기',
+    homeRecordAgainBtn: '다시 기록하기',
     homeSlotActive: '지금',
-    homeSlotCompleted: '나눴어요',
+    homeSlotCompleted: '기록 완료',
     homeSlotUpcoming: '아직 이르네요',
     homeSlotOpen: '아직 열려 있어요',
-    homeShareLaterBtn: '지금 나누기',
+    homeShareLaterBtn: '지금 기록하기',
 
-    homePeerShared: '{name}도 나눴어요',
-    homePeerWaiting: '{name}은 아직이에요',
+    homePeerShared: '{name}도 기록했어요',
+    homePeerWaiting: '{name}은 아직 기록 전이에요',
 
     homeSyncPending: '{n}개가 연결을 기다리고 있어요',
     homeSyncDone: '모두 전해졌어요',
