@@ -152,6 +152,7 @@ export default function App() {
               activeRole={activeRole}
               onOpenCapture={handleOpenCapture}
               onNavigateToHamt={() => setActiveTab('hamt')}
+              onOpenAiVoice={() => setIsAiVoiceOpen(true)}
               onViewMedia={(id) => setPreviewMomentId(id)}
             />
           )}
@@ -180,7 +181,6 @@ export default function App() {
           currentTab={activeTab}
           onTabChange={setActiveTab}
           language={language}
-          onOpenAiVoice={() => setIsAiVoiceOpen(true)}
         />
 
         {/* Mobile Loading Screen Component */}

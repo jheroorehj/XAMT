@@ -1,20 +1,18 @@
 import React from 'react';
 import { Language } from '../types';
 import { translations } from '../locales/translations';
-import { Home, Layers, BookOpen, Mic } from 'lucide-react';
+import { Home, Layers, BookOpen } from 'lucide-react';
 
 interface NavigationProps {
   currentTab: 'home' | 'hamt' | 'calendar';
   onTabChange: (tab: 'home' | 'hamt' | 'calendar') => void;
   language: Language;
-  onOpenAiVoice: () => void;
 }
 
 export const Navigation: React.FC<NavigationProps> = ({
   currentTab,
   onTabChange,
   language,
-  onOpenAiVoice,
 }) => {
   const t = translations[language];
 
@@ -51,18 +49,7 @@ export const Navigation: React.FC<NavigationProps> = ({
           <span className="text-[11px] mt-0.5">{t.navHamtTimeline}</span>
         </button>
 
-        {/* 3. AI Voice in Menu Bar */}
-        <button
-          onClick={onOpenAiVoice}
-          className="flex flex-col items-center justify-center flex-1 py-1 group text-[#3E6B48]"
-        >
-          <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-[#3E6B48] to-[#5B8A65] text-white flex items-center justify-center shadow-md shadow-[#3E6B48]/25 group-hover:scale-105 active:scale-95 transition-transform">
-            <Mic className="w-4 h-4 text-white" />
-          </div>
-          <span className="text-[11px] mt-0.5 font-bold text-[#3E6B48]">{t.navVoice}</span>
-        </button>
-
-        {/* 4. Calendar & Diary */}
+        {/* 3. Calendar & Diary */}
         <button
           onClick={() => onTabChange('calendar')}
           className={`flex flex-col items-center justify-center flex-1 py-1 rounded-xl transition-all ${

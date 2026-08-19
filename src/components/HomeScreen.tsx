@@ -13,6 +13,7 @@ import {
   Moon,
   ArrowRight,
   CloudOff,
+  Mic,
 } from 'lucide-react';
 import { FamilyAvatar } from './FamilyAvatar';
 
@@ -24,6 +25,7 @@ interface HomeScreenProps {
   onOpenCapture: (slot: TimeSlotType, mode: 'photo' | 'video' | 'upload') => void;
   onNavigateToHamt: () => void;
   onViewMedia: (momentId: string) => void;
+  onOpenAiVoice: () => void;
 }
 
 const SLOT_ORDER: TimeSlotType[] = ['morning', 'lunch', 'dinner'];
@@ -42,6 +44,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
   onOpenCapture,
   onNavigateToHamt,
   onViewMedia,
+  onOpenAiVoice,
 }) => {
   const t = translations[language];
   const [isGuideOpen, setIsGuideOpen] = useState(false);
@@ -212,7 +215,26 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
         </div>
       </section>
 
-      {/* 3. Offline reality: captured here, still waiting for a signal */}
+      {/* 3. Voice — the other way to leave today's moment, on its own */}
+      <button
+        onClick={onOpenAiVoice}
+        className="w-full bg-white rounded-2xl p-3.5 border border-[#E4DDCF] shadow-xs flex items-center gap-3 hover:border-[#CBBFA6] active:scale-[0.995] transition-all text-left"
+      >
+        <div className="w-11 h-11 rounded-2xl bg-[#3E6B48] text-white flex items-center justify-center shrink-0 shadow-xs">
+          <Mic className="w-5 h-5" />
+        </div>
+        <div className="flex-1 min-w-0">
+          <div className="font-bold text-[14px] text-[#1E3022] leading-tight">
+            {t.homeVoiceBtn}
+          </div>
+          <div className="text-[11px] text-[#7A867B] mt-0.5">
+            {t.homeVoiceHint}
+          </div>
+        </div>
+        <ArrowRight className="w-4 h-4 text-[#8FA090] shrink-0" />
+      </button>
+
+      {/* 4. Offline reality: captured here, still waiting for a signal */}
       {pendingCount > 0 && (
         <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-[#FBF6E9] border border-[#EADFC4] text-[#7A6533]">
           <CloudOff className="w-4 h-4 shrink-0" />
@@ -222,7 +244,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
         </div>
       )}
 
-      {/* 4. The bridge to ХАМТ — carries today's reason to go there */}
+      {/* 5. The bridge to ХАМТ — carries today's reason to go there */}
       <button
         onClick={onNavigateToHamt}
         className="w-full py-3 px-4 rounded-xl bg-[#EFEBE0] hover:bg-[#E5E0D2] text-[#243327] flex items-center justify-between transition-all border border-[#DFD8C7]"
@@ -235,7 +257,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
         <ArrowRight className="w-4 h-4 text-[#3E6B48]" />
       </button>
 
-      {/* 5. Guidance, out of the way at the bottom */}
+      {/* 6. Guidance, out of the way at the bottom */}
       <div className="bg-[#FAF8F2] rounded-xl border border-[#E6E1D4] overflow-hidden">
         <button
           onClick={() => setIsGuideOpen(!isGuideOpen)}

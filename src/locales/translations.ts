@@ -35,6 +35,10 @@ export interface Translations {
   homeBridgeConnected: string;   // "{n} moments came together today"
   homeBridgeEmpty: string;
 
+  // Home - voice entry (moved off the bottom bar)
+  homeVoiceBtn: string;
+  homeVoiceHint: string;
+
   // Time Slots
   slotMorning: string;
   slotMorningTime: string;
@@ -115,6 +119,9 @@ export const translations: Record<Language, Translations> = {
     homeBridgeConnected: 'Өнөөдөр {n} агшин холбогдлоо',
     homeBridgeEmpty: 'ХАМТ хуудсаар хамтдаа үзэх',
 
+    homeVoiceBtn: 'Хоолойгоор ярих',
+    homeVoiceHint: 'Өдрийн тэмдэглэлд нэгтгэнэ',
+
     slotMorning: 'Өглөө',
     slotMorningTime: '05-11',
     slotLunch: 'Өдөр',
@@ -186,6 +193,9 @@ export const translations: Record<Language, Translations> = {
 
     homeBridgeConnected: '오늘 {n}개의 순간이 이어졌어요',
     homeBridgeEmpty: 'ХАМТ에서 함께 보기',
+
+    homeVoiceBtn: '목소리로 남기기',
+    homeVoiceHint: '공유일기에 담겨요',
 
     slotMorning: '아침',
     slotMorningTime: '05-11',
